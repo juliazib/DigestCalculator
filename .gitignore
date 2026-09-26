@@ -1,0 +1,12 @@
+# Arquivos compilados do Java
+*.class
+
+# Diretório de saída da compilação
+bin/
+
+# VS Code
+.vscode/
+
+# OS files
+.DS_Store
+Thumbs.db
