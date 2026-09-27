@@ -22,4 +22,23 @@ public class DigestCatalog {
 
     return fileDigests.get(digestType);
   }
+
+  public boolean hasDigestForAnotherFile(String fileName, DigestType digestType, String digest) {
+    for (Map.Entry<String, Map<DigestType, String>> entry : entries.entrySet()) {
+
+      String otherFileName = entry.getKey();
+
+      if (otherFileName.equals(fileName)) {
+        continue;
+      }
+
+      String otherDigest = entry.getValue().get(digestType);
+
+      if (digest.equalsIgnoreCase(otherDigest)) {
+        return true;
+      }
+    }
+
+    return false;
+  }
 }
