@@ -6,11 +6,7 @@ public class ProgramArguments {
   private final Path digestListPath;
   private final Path filesDirectory;
 
-  public ProgramArguments(
-      DigestType digestType,
-      Path digestListPath,
-      Path filesDirectory) {
-
+  public ProgramArguments(DigestType digestType, Path digestListPath, Path filesDirectory) {
     this.digestType = digestType;
     this.digestListPath = digestListPath;
     this.filesDirectory = filesDirectory;

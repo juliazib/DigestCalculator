@@ -10,8 +10,7 @@ public class ArgumentParser {
   public ProgramArguments parse(String[] args) {
 
     if (args.length < 3) {
-      throw new IllegalArgumentException(
-          "Quantidade de argumentos inválida.");
+      throw new IllegalArgumentException("Quantidade de argumentos inválida.");
     }
 
     DigestType digestType = parseDigestType(args[0]);
@@ -21,33 +20,24 @@ public class ArgumentParser {
 
     validatePaths(digestListPath, filesDirectory);
 
-    return new ProgramArguments(
-        digestType,
-        digestListPath,
-        filesDirectory);
+    return new ProgramArguments(digestType, digestListPath, filesDirectory);
   }
 
   private DigestType parseDigestType(String value) {
     try {
       return DigestType.valueOf(value.toUpperCase());
     } catch (IllegalArgumentException e) {
-      throw new IllegalArgumentException(
-          "Tipo de digest inválido.");
+      throw new IllegalArgumentException("Tipo de digest inválido.");
     }
   }
 
-  private void validatePaths(
-      Path digestListPath,
-      Path filesDirectory) {
-
+  private void validatePaths(Path digestListPath, Path filesDirectory) {
     if (!Files.isRegularFile(digestListPath)) {
-      throw new IllegalArgumentException(
-          "O caminho da lista de digests não corresponde a um arquivo válido.");
+      throw new IllegalArgumentException("O caminho da lista de digests não corresponde a um arquivo válido.");
     }
 
     if (!Files.isDirectory(filesDirectory)) {
-      throw new IllegalArgumentException(
-          "O caminho dos arquivos não corresponde a uma pasta válida.");
+      throw new IllegalArgumentException("O caminho dos arquivos não corresponde a uma pasta válida.");
     }
   }
 

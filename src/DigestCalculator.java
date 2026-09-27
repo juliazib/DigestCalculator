@@ -2,6 +2,10 @@ import java.io.IOException;
 import java.nio.file.Path;
 import java.util.Map;
 
+import javax.xml.parsers.ParserConfigurationException;
+
+import org.xml.sax.SAXException;
+
 public class DigestCalculator {
 
   public static void main(String[] args) {
@@ -28,6 +32,12 @@ public class DigestCalculator {
 
     } catch (IOException e) {
       System.out.println("Erro ao acessar os arquivos: " + e.getMessage());
+
+    } catch (ParserConfigurationException e) {
+      System.out.println("Erro ao configurar o leitor de XML.");
+
+    } catch (SAXException e) {
+      System.out.println("Erro ao interpretar o arquivo XML: " + e.getMessage());
     }
   }
 }
