@@ -7,6 +7,9 @@ bin/
 # VS Code
 .vscode/
 
+pasta_arquivos/
+lista_digests/
+
 # OS files
 .DS_Store
 Thumbs.db

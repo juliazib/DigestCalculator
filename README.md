@@ -3,7 +3,7 @@
 **Compila e envia os `.class` para a pasta `bin/`:**
 
 ```bash
-javac -d bin src/DigestCalculator.java
+javac -d bin src/*.java
 ```
 
 **Executa informando onde estão os `.class`:**
