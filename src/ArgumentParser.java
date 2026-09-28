@@ -1,3 +1,6 @@
+// Julia Gomes Zibordi (2320934)
+// Marcos Paulo Marinho Vieira (2320466)
+
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;

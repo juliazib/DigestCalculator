@@ -1,3 +1,6 @@
+// Julia Gomes Zibordi (2320934)
+// Marcos Paulo Marinho Vieira (2320466)
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
