@@ -1,4 +1,5 @@
 import java.io.IOException;
+import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.security.MessageDigest;
@@ -10,18 +11,24 @@ public class DigestService {
     MessageDigest messageDigest;
 
     try {
-      messageDigest = MessageDigest.getInstance(getAlgorithmName(digestType));
+      messageDigest = MessageDigest.getInstance(
+          getAlgorithmName(digestType));
     } catch (NoSuchAlgorithmException e) {
-      throw new IllegalStateException("Algoritmo de digest não suportado " + digestType, e);
+      throw new IllegalStateException(
+          "Algoritmo de digest não suportado " + digestType, e);
     }
 
-    byte[] content = Files.readAllBytes(file);
+    try (InputStream input = Files.newInputStream(file)) {
 
-    messageDigest.update(content);
+      byte[] buffer = new byte[8192];
+      int bytesRead;
 
-    byte[] digest = messageDigest.digest();
+      while ((bytesRead = input.read(buffer)) != -1) {
+        messageDigest.update(buffer, 0, bytesRead);
+      }
+    }
 
-    return toHex(digest);
+    return toHex(messageDigest.digest());
   }
 
   private String getAlgorithmName(DigestType digestType) {
